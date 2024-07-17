@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Entity
 public class Trade {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
     @ManyToOne
