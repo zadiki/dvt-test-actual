@@ -29,6 +29,12 @@ public class TradeService {
         if (existing.isPresent()) {
             throw new DuplicateEntryException("Trade already exist");
         }
+
+        Optional<User> user= userRepository.findById(trade.getUser().getId());
+
+        if (!user.isPresent()) {
+            userRepository.save(trade.getUser());
+        }
         tradeRepository.save(trade);
     }
 

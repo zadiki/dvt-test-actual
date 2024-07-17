@@ -1,5 +1,7 @@
 package com.hackerrank.stocktrade.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -23,6 +25,7 @@ public class Trade {
     @DecimalMin("130.42")
     @DecimalMax("195.65")
     private Float price;
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="UTC -4")
     private Timestamp timestamp;
 
     public Trade() {
