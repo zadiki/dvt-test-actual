@@ -1,10 +1,38 @@
 package com.hackerrank.stocktrade.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.hackerrank.stocktrade.model.Trade;
+import com.hackerrank.stocktrade.service.TradeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/trades")
 public class TradesController {
-    
+    @Autowired
+    private TradeService tradeService;
+
+    @PostMapping("")
+    public ResponseEntity<?> createTrade(@RequestBody(required = true) Trade trade) {
+        tradeService.createAnewTrade(trade);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Trade> getTradeById(@PathVariable Long id) {
+        return new ResponseEntity<>(tradeService.findTradeById(id), HttpStatus.OK);
+    }
+    @GetMapping("")
+    public ResponseEntity<List<Trade>> getAllTrades() {
+        return new ResponseEntity<>(tradeService.getAllTrades(), HttpStatus.OK);
+    }
+
+    @GetMapping("users/{id}")
+    public ResponseEntity<List<Trade>> getTradesByUser(@PathVariable Long userId) {
+        return new ResponseEntity<>(tradeService.findTradesByUserId(userId), HttpStatus.OK);
+    }
+
 }
