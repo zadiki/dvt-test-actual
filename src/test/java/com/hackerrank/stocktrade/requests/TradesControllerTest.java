@@ -68,7 +68,7 @@ public class TradesControllerTest {
          *     "id": 1,
          *     "type": "buy",
          *     "user": {
-         *         "id": 4,
+         *         "id": 1,
          *         "name": "Derrick Garcia"
          *     },
          *     "symbol": "ZAYO",
