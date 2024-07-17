@@ -34,7 +34,7 @@ public class TradesController {
         return new ResponseEntity<>(tradeService.getAllTrades(), HttpStatus.OK);
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<List<Trade>> getTradesByUser(@PathVariable Long userId) {
         return new ResponseEntity<>(tradeService.findTradesByUserId(userId), HttpStatus.OK);
     }
