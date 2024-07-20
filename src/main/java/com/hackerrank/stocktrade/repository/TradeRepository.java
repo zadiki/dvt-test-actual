@@ -17,4 +17,5 @@ public interface TradeRepository extends JpaRepository<Trade, Long> {
     List<Trade> findAllBySymbolAndTypeAndTimestampBetween(String symbol, String type, Timestamp startDate, Timestamp endDate);
 
     List<Trade> findAllBySymbolAndTimestampBetweenOrderByPriceDesc(String symbol, Timestamp startDate, Timestamp endDate);
+    Optional<Trade> findTopByTimestampBetweenAndSymbolOrderByPriceDesc(Timestamp startDate,Timestamp endDate,String symbol);
 }

@@ -57,7 +57,7 @@ public class TradeService {
 
     public List<Trade> findTradesByUserId(Long userId) {
         Optional<User> user = userRepository.findById(userId);
-        if (user.isPresent()) {
+        if (!user.isPresent()) {
             throw new DataNotFoundException("user with that id does not exist");
         }
         List<Trade> tradeList = tradeRepository.findAllByUserIdOrderByIdAsc(userId);
